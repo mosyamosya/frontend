@@ -7,11 +7,24 @@
 </head>
 
 <body>
+<div id="menu">
 <a href="6/" id="btn-lab">lab 6</a><br>
 <a href="7/" id="btn-lab">lab 7</a><br>
 <a href="8norm/" id="btn-lab">lab 8</a><br>
 <a href="10/" id="btn-lab">lab 10</a><br>
- 
+</div> 
+<div class="hamburger-menu">
+<input id="menu__toggle" type="checkbox" />
+<label class="menubtn" for="menutoggle">
+<span></span>
+</label> <ul class="menu__box">
+<li><a class="menu__item" href="6/">Лабораторна 6</a></li>
+<li><a class="menu__item" href="7/">Лабораторна 7</a></li>
+<li><a class="menu__item" href="8norm/">Лабораторна 8</a></li>
+<li><a class="menu__item" href="10/">Лабораторна 10</a></li>
+<li><a class="menu__item" href="11/">Лабораторна 11</a></li>
+</ul>
+</div>
   <style>
   #btn-lab {
    border: red;
@@ -19,7 +32,79 @@
    margin-top: 20px;
    height: 50px;
    background-color: yellow;
-    }
+}
+/* скрываем чекбокс */
+#menu__toggle {
+opacity: 0;
+}/* стилизуем кнопку */
+.menu__btn {
+display: flex; /* используем flex для центрирования содержимого */
+align-items: center; /* центрируем содержимое кнопки */
+position: fixed;
+top: 20px;
+left: 20px; width: 26px;
+height: 26px; cursor: pointer;
+z-index: 1;
+}/* добавляем "гамбургер" */
+.menu__btn > span,
+.menu__btn > span::before,
+.menu__btn > span::after {
+display: block;
+position: absolute; width: 100%;
+height: 2px; background-color: #616161;
+}
+.menu__btn > span::before {
+content: '';
+top: -8px;
+}
+.menu__btn > span::after {
+content: '';
+top: 8px;
+}
+.menu__box {
+display: block;
+position: fixed;
+visibility: hidden;
+top: 0;
+left: -100%; width: 300px;
+height: 100%; margin: 0;
+padding: 80px 0; list-style: none;
+text-align: center; background-color: #ECEFF1;
+box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
+}/* элементы меню */
+.menu__item {
+display: block;
+padding: 12px 24px; color: #333; font-family: 'Roboto', sans-serif;
+font-size: 20px;
+font-weight: 600; text-decoration: none;
+}
+.menu__item:hover {
+background-color: #CFD8DC;
+}
+  #menutoggle:checked ~ .menubtn > span {
+transform: rotate(45deg);
+}
+#menutoggle:checked ~ .menubtn > span::before {
+top: 0;
+transform: rotate(0);
+}
+#menutoggle:checked ~ .menubtn > span::after {
+top: 0;
+transform: rotate(90deg);
+}
+#menutoggle:checked ~ .menubox {
+visibility: visible;
+left: 0;
+}
+.menu__btn > span,
+.menu__btn > span::before,
+.menu__btn > span::after {
+transition-duration: .25s;
+}.menu__box {
+transition-duration: .25s;
+}.menu__item {
+transition-duration: .25s;
+}
   </style>
 </body>
 
